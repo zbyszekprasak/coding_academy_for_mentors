@@ -24,6 +24,9 @@
 
 
 def solution(n: int):
+    if n < 0:
+        raise ValueError("Negative number encountered while non-negative expected.")
+
     binary_string = f"{n:b}"
     counting = False
     max_gap, index, length = 0, 0, len(binary_string)
@@ -47,6 +50,11 @@ def solution(n: int):
 def main():
     for number in [0, 1, 5, 9, 15, 17, 20, 32, 529, 1041, 2_147_483_647]:
         print(number, f"{number:b}", solution(number))
+
+    try:
+        solution(-1)
+    except ValueError:
+        print("Value error excepted.")
 
 
 if __name__ == "__main__":
