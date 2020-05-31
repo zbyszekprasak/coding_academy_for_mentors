@@ -20,4 +20,19 @@
 
 
 def solution(card_number):
-    pass
+    card_digits = [int(digit) for digit in card_number]
+    for i in range(-2, -len(card_digits) - 1, -2):
+        card_digits[i] = card_digits[i] * 2 % 9
+    return sum(card_digits) % 10 == 0
+
+
+def main():
+    for card_number in ["4111111111111111",
+                        "5500000000000004",
+                        "4198786787558765",
+                        "9875787643456354"]:
+        print(f"Card number {card_number} is {'valid' if solution(card_number) else 'invalid'}")
+
+
+if __name__ == "__main__":
+    main()
