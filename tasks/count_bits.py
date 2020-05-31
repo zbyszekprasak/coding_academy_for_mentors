@@ -13,5 +13,24 @@
 # In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
 
 
-def solution(A, B):
-    pass
+def solution(a, b):
+    if a < 0:
+        raise ValueError("Parameter 'a' is negative but only non-negative is expected.")
+    elif b < 0:
+        raise ValueError("Parameter 'b' is negative but only non-negative is expected.")
+
+    return f"{a * b:b}".count("1")
+
+
+def main():
+    for a, b in [(3, 7), (0, 3), (1_234, 5_678), (1, 100_000_000)]:
+        print(f"{a} * {b} = {a * b} contains {solution(a, b)} one bits.")
+
+    try:
+        solution(-1, 3)
+    except ValueError:
+        print("Value error excepted.")
+
+
+if __name__ == "__main__":
+    main()
