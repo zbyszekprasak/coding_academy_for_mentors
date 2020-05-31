@@ -17,5 +17,25 @@
 #
 
 
-def solution(A):
-    pass
+def solution(a):
+    a = sorted(a)
+    i = 1
+    for e in a:
+        if e < 1:
+            continue
+        elif e == i:
+            i += 1
+        elif e > i:
+            break
+    return i
+
+
+def main():
+    for a in [[1, 3, 6, 4, 1, 2],
+              [1, 2, 3],
+              [-1, -3]]:
+        print(f"Array {a} does not contain {solution(a)}")
+
+
+if __name__ == "__main__":
+    main()
