@@ -39,5 +39,28 @@
 # In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
 
 
-def solution(A, K):
-    pass
+def solution(a, k):
+    if len(a) == 0:
+        return a
+    else:
+        k %= len(a)
+        return a[-k:] + a[:-k]
+
+
+def main():
+    for a, k in [([3, 8, 9, 7, 6], -5),
+                 ([3, 8, 9, 7, 6], -1),
+                 ([3, 8, 9, 7, 6], 0),
+                 ([3, 8, 9, 7, 6], 1),
+                 ([3, 8, 9, 7, 6], 2),
+                 ([3, 8, 9, 7, 6], 3),
+                 ([3, 8, 9, 7, 6], 4),
+                 ([3, 8, 9, 7, 6], 5),
+                 ([3, 8, 9, 7, 6], 6),
+                 ([], 2),
+                 ([1], 3)]:
+        print(f"Array {a} rotated {k} times is {solution(a, k)}")
+
+
+if __name__ == "__main__":
+    main()
