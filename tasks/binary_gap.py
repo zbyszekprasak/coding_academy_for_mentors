@@ -23,5 +23,31 @@
 # N is an integer within the range [1..2,147,483,647].
 
 
-def solution(N):
-    pass
+def solution(n: int):
+    binary_string = f"{n:b}"
+    counting = False
+    max_gap, index, length = 0, 0, len(binary_string)
+    while index < length:
+        digit = binary_string[index]
+        if counting:
+            if digit == "0":
+                current_gap += 1
+            else:
+                if max_gap < current_gap:
+                    max_gap = current_gap
+                current_gap = 0
+        else:
+            if digit == "1":
+                counting = True
+                current_gap = 0
+        index += 1
+    return max_gap
+
+
+def main():
+    for number in [0, 1, 5, 9, 15, 17, 20, 32, 529, 1041, 2_147_483_647]:
+        print(number, f"{number:b}", solution(number))
+
+
+if __name__ == "__main__":
+    main()
